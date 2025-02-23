@@ -772,6 +772,25 @@ typedef struct _STATIC_FILTER
     DATA_LINK_LAYER_FILTER   m_DataLinkFilter;
     NETWORK_LAYER_FILTER     m_NetworkFilter;
     TRANSPORT_LAYER_FILTER   m_TransportFilter;
+
+#ifdef EXTENDED_FILTERS
+    /**
+     * @brief Indicates if the Process ID is valid.
+     */
+#define PROCESS_ID_VALID   0x00000008 
+
+     /**
+      * @brief Process ID of the application that is associated with the filter.
+      * If the application exits, the filter is removed.
+      */
+    ULARGE_INTEGER   m_ulProcessId;
+
+    /**
+     * @brief Reserved for future use.
+     */
+    ULARGE_INTEGER   m_ulReserved[4];
+#endif // EXTENDED_FILTERS
+
 } STATIC_FILTER, * PSTATIC_FILTER;
 
 /**
